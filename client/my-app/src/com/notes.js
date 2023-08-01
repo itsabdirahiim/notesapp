@@ -20,7 +20,7 @@ export default function Notes() {
   const [editid, seteditid] = React.useState();
 
   React.useEffect(() => {
-    fetch("/api")
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/api")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -67,7 +67,7 @@ export default function Notes() {
 
   React.useEffect(() => {
     if (createdTime) {
-      fetch("api/createnote", {
+      fetch("https://notesapp-83b1790bf6d9.herokuapp.com/api/createnote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export default function Notes() {
   });
 
   function logout() {
-    fetch("/logout")
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/logout")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -127,7 +127,7 @@ export default function Notes() {
     }
   };
   function deletenote(id) {
-    fetch("api/deletenote", {
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/api/deletenote", {
       method: "delete",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -149,7 +149,7 @@ export default function Notes() {
   }
   React.useEffect(() => {
     if (newtime)
-      fetch("api/updatenote", {
+      fetch("https://notesapp-83b1790bf6d9.herokuapp.com/api/updatenote", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

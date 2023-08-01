@@ -14,9 +14,10 @@ const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 
 connectDB();
-const PORT = 50000;
+const PORT = process.env.PORT || 50000;
 
 app.use(cors());
+
 
 app.use(
   session({

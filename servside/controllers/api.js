@@ -3,6 +3,7 @@ module.exports = {
   getapi: async (req, res) => {
     try {
       const docs = await Notes.find({ userId: req.user.id });
+    console.log(req.user)
       const notes = docs.map((doc) => doc);
       res.json({ notes: notes });
     } catch (err) {

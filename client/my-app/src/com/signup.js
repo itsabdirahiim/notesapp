@@ -7,7 +7,7 @@ export default function Signup() {
   const [password, setpassword] = React.useState();
   const [msg, setmsg] = React.useState();
   React.useEffect(() => {
-    fetch("/signup")
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/signup")
       .then((response) => response.json())
       .then((data) => {
         if (data.success === false) {
@@ -30,7 +30,7 @@ export default function Signup() {
   }
   const sumbit2 = (event) => {
     event.preventDefault();
-    fetch("/signup", {
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

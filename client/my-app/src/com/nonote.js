@@ -35,7 +35,7 @@ export function Nonote() {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetch("api/createnote", {
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch("/logout")
+    fetch("https://notesapp-83b1790bf6d9.herokuapp.com/logout")
       .then((response) => {
         if (response.ok) {
           return response.json();
