@@ -34,7 +34,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 // Configure session middleware
 app.use(
@@ -42,7 +42,7 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    proxy: true,
+    // proxy: true,
     store: new MongoStore({ mongoUrl: process.env.db_string }),
     cookie: {
       secure: true,
