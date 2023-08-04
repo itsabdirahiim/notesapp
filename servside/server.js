@@ -14,6 +14,7 @@ const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser')
 const path = require('path'); 
+const history = require("connect-history-api-fallback");
 connectDB();
 const PORT = process.env.PORT || 50000;
 app.use(express.json());
@@ -36,11 +37,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(cookieParser());
 // app.set('trust proxy', 1);
-app.use(
-  history({
-    index: "/index.html",
-  })
-);
+
 
 // Configure session middleware
 app.use(
@@ -72,7 +69,12 @@ app.use("/", homer);
 app.use("/api", apir);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/my-app/build")));
-  app.get("/*", function (req, res) {
+  app.use(
+    history({
+      index: "/index.html",
+    })
+  );
+  app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "../client/my-app/build/" ,"index.html"));
   });
 }
