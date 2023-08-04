@@ -12,35 +12,64 @@ const apir = require("./routes/api");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
-
+const cookieParser = require('cookie-parser')
 connectDB();
 const PORT = process.env.PORT || 50000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+// app.use(cors());
+const whitelist = ['http://localhost:3000',]
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions));
+app.use(cookieParser());
+app.set('trust proxy', 1);
 
-
+// Configure session middleware
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
+    proxy: true,
     store: new MongoStore({ mongoUrl: process.env.db_string }),
     cookie: {
-      maxAge: 86400000,
+      secure: true,
+      maxAge: 3600000,
     },
   })
 );
 
+
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.use(flash());
 
 app.use("/", homer);
 app.use("/api", apir);
+if (  process.env.PORT === "production"){
+  app.use(express.static(path.join(_dirname, "client/my-app/build")));
+  app.get("*", function(req,res){
+    res.sendFile(path.join(_dirname, "client/my-app/build", "index.html"))
+  })
+}
 
 app.listen(PORT, () => {
   console.log(`its running ${PORT}`);

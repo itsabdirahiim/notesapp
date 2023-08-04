@@ -12,7 +12,6 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
@@ -22,10 +21,11 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) {
-        return next(err);
+        return next(err); 
       }
-     console.log("Success! You are logged in.",user)
+     console.log("Success! You are logged in yoooooo it works ff .",req.user)
       return res.json({ success: true, msg: "Success! You are logged in." });
+      
     });
   })(req, res, next);
 };

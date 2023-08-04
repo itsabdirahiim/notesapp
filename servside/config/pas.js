@@ -26,12 +26,39 @@ module.exports = function (passport) {
   
 
   passport.serializeUser((user, done) => {
+    
     done(null, user.id)
+    
   })
+  passport.deserializeUser(async (id, done) => {
+    try {
+      console.log("Deserializing user with id:", id);
+      const user = await User.findById(id);
+      if (!user) {
+        console.log("User not found");
+        return done(null, false);
+      }
+      console.log("User found:", user);
+      done(null, user);
+    } catch (err) {
+      console.error("Error deserializing user:", err);
+      done(err, null);
+    }
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
- passport.deserializeUser((id, done) => {
-  User.findById(id)
-  .then((user) => done(null, user))
-  .catch((err) => done(err, null));
-  })
+//  passport.deserializeUser((id, done) => {
+//   User.findById(id)
+//   .then((user) => done(null, user))
+//   .catch((err) => done(err, null));
+//   })
 }
