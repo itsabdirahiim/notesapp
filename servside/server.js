@@ -14,7 +14,6 @@ const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser')
 const path = require('path'); 
-const history = require("connect-history-api-fallback");
 connectDB();
 const PORT = process.env.PORT || 50000;
 app.use(express.json());
@@ -69,11 +68,6 @@ app.use("/", homer);
 app.use("/api", apir);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/my-app/build")));
-  app.use(
-    history({
-      index: "/index.html",
-    })
-  );
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "../client/my-app/build/" ,"index.html"));
   });
