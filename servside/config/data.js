@@ -9,7 +9,7 @@ const conncetDB = async ()=>{
         })
         console.log(`its connected :${conn.connection.host}`)
     }catch(err){
-        console.error(err,process.env.db_string)
+        console.error(err)
         process.exit(1)
     }
 }
