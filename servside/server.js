@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // app.use(cors());
-const whitelist = ['http://localhost:3000',]
+const whitelist = ['http://localhost:3000']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
