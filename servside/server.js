@@ -57,8 +57,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 // app.use(bodyParser.json());
 
 app.use(flash());
