@@ -16,7 +16,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Link to="/">Home</Link>
-<Link to="/signup">Signup</Link>
+<Link to="/login">login</Link>
     </div>
   );
 }
