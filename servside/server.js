@@ -64,11 +64,11 @@ app.use(flash());
 
 app.use("/", homer);
 app.use("/api", apir);
-if (  process.env.PORT === "production"){
-  app.use(express.static(path.join(_dirname, "client/my-app/build")));
-  app.get("*", function(req,res){
-    res.sendFile(path.join(_dirname, "client/my-app/build", "index.html"))
-  })
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/my-app/build")));
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/my-app/build", "index.html"));
+  });
 }
 
 app.listen(PORT, () => {
