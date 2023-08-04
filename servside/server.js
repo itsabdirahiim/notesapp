@@ -13,6 +13,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser')
+const path = require('path'); 
 connectDB();
 const PORT = process.env.PORT || 50000;
 app.use(express.json());
