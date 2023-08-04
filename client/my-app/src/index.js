@@ -6,7 +6,7 @@ import './index.css'
 
 export default function Index() {
   return (
-    <div>index</div>
+    <div></div>
   )
 }
 ReactDOM.render(<App />, document.getElementById("root"))
