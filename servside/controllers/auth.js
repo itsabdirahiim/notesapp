@@ -12,7 +12,6 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-  console.log("helooo")
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);

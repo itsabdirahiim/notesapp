@@ -64,16 +64,16 @@ export function Nonote() {
         }
       })
       .then((data) => {
+        console.log("Logout data:", data); // Add this line for debugging
         if (data.success === true) {
           window.location.href = "/login";
         } else {
-          // Handle unsuccessful logout
+          console.log("Unsuccessful logout:", data); // Add this line for debugging
           window.location.href = "/";
         }
       })
       .catch((error) => {
-        // Handle network errors or logout failure
-        console.error(error);
+        console.error("Logout error:", error); // Add this line for debugging
       });
     setnoteadded(false);
   }
