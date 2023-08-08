@@ -20,6 +20,7 @@ module.exports = {
         createdtime: req.body.createdTime,
       });
       res.json("created");
+      console.log("it got created")
     } catch (err) {
       console.log(err);
     }
