@@ -69,8 +69,9 @@ app.get('*', function (req, res) {
 // app.use(bodyParser.json());
 
 app.use(flash());
-app.use("/api", apir);
 app.use("/", homer);
+app.use("/api", apir);
+
 // app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 
