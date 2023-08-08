@@ -13,6 +13,7 @@ export default function Home() {
         if (response.ok) {
           return response.json();
         } else {
+          window.location.href = "/login";
           throw new Error("Unauthorized");
           
         }
