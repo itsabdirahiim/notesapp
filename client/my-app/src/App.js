@@ -10,9 +10,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="https://notesapp-505-app-eacf6219a989.herokuapp.com/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="https://notesapp-505-app-eacf6219a989.herokuapp.com/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </div>
