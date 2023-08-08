@@ -14,7 +14,7 @@ const quoteSchema = new mongoose.Schema({
     required: true,
   },
   createdtime: {
-    type: String,
+    type: Date,
     required: true,
   },
 });
