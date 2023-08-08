@@ -15,8 +15,8 @@ export default function Home() {
           return response.json();
         } else {
           // window.location.href = "/login";
-          // throw new Error("Unauthorized");
-          return <Login/>
+          throw new Error("Unauthorized");
+       
          
         }
       })
