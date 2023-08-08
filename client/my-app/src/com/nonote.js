@@ -36,7 +36,7 @@ export function Nonote() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const currentTime = new Date();
-   
+   console.log(currentTime)
     fetch("/api/createnote", {
       method: "POST",
       headers: {
