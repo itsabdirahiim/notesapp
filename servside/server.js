@@ -59,17 +59,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, '../client/my-app/build/static')));
+
 
 // app.use(bodyParser.json());
 
 app.use(flash());
 
 app.use("/", homer);
+app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 app.use("/api", apir);
-app.get(`*`, function (req, res) {
-  res.sendFile(path.join(__dirname , "../client/my-app/build" ));
-});
+
 // if (process.env.NODE_ENV === "production") {
 //   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
 //   app.get("*", function (req, res) {
