@@ -20,7 +20,7 @@ export default function Notes() {
   const [editid, seteditid] = React.useState();
 
   React.useEffect(() => {
-    fetch("/api")
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api")
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -67,7 +67,7 @@ export default function Notes() {
 
   React.useEffect(() => {
     if (createdTime) {
-      fetch("api/createnote", {
+      fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api/createnote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

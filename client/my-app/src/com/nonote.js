@@ -37,7 +37,7 @@ export function Nonote() {
     event.preventDefault();
     const currentTime = new Date();
    console.log(currentTime)
-    fetch("/api/createnote", {
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
