@@ -68,13 +68,12 @@ app.use("/api", apir);
 app.use("/", homer);
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
-
-// if (process.env.NODE_ENV === "production") {
-//   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
-//   app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname , "../client/my-app/build" ));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname , "../client/my-app/build/index.html" ));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`its running ${PORT}`);
