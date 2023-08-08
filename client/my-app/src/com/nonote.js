@@ -55,7 +55,7 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch("/logout")
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/logout")
       .then((response) => {
         if (response.ok) {
           return response.json();
