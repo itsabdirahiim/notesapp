@@ -8,7 +8,6 @@ export default function Login() {
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
   React.useEffect(() => {
-    console.log("log in page")
     fetch("/login")
       .then((response) => response.json())
       .then((data) => {
