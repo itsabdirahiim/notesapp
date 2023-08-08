@@ -11,6 +11,7 @@ export function Nonote() {
   const [addnotee, setnoteadded] = React.useState(initialAddNoteState);
   const [note, setnote] = React.useState("");
   const [notes, setnotes] = React.useState("");
+  const [createdTime, setCreatedTime] = React.useState();
 
   React.useEffect(() => {
     const initialAddNoteState = localStorage.getItem("addnotee");
@@ -34,13 +35,14 @@ export function Nonote() {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+    const currentTime = new Date();
+    setCreatedTime(currentTime);
     fetch("api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ note: note, notes: notes }),
+      body: JSON.stringify({ note: note, notes: notes, createdTime: createdTime, }),
     })
       .then((response) => response.json())
       .then((data) => {
