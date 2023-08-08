@@ -70,9 +70,10 @@ app.use("/", homer);
 
 if (process.env.NODE_ENV  === "production") {
   console.log("yooo")
+  app.use(express.static(path.join(__dirname, '../client/my-app/build')));
   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
   app.get('*', function (req, res) {
-    app.use(express.static(path.join(__dirname, '../client/my-app/build')));
+  
     res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
     console.log("yooo")
   });
