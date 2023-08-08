@@ -20,19 +20,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // app.use(cors());
-const whitelist = ['http://localhost:3000'," https://notesapp-505-app-eacf6219a989.herokuapp.com","http://localhost:50000"]
+
+const whitelist = ['http://localhost:3000', "https://notesapp-505-app-eacf6219a989.herokuapp.com", "http://localhost:50000"];
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
+    console.log("** Origin of request " + origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
+      console.log("Origin acceptable");
+      callback(null, true);
     } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
+      console.log("Origin rejected");
+      callback(new Error('Not allowed by CORS'));
     }
   }
-}
+};
 app.use(cors(corsOptions));
 app.use(cookieParser());
 // app.set('trust proxy', 1);
