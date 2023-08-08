@@ -36,13 +36,13 @@ export function Nonote() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const currentTime = new Date();
-    setCreatedTime(currentTime);
+   
     fetch("api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ note: note, notes: notes, createdTime: createdTime, }),
+      body: JSON.stringify({ note: note, notes: notes, createdTime: currentTime, }),
     })
       .then((response) => response.json())
       .then((data) => {
