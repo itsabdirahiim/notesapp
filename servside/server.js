@@ -60,6 +60,11 @@ app.use(passport.session());
 
 // app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
+app.get('*', function (req, res) {
+  
+  res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
+  console.log("yooo")
+})
 
 // app.use(bodyParser.json());
 
@@ -68,11 +73,7 @@ app.use("/api", apir);
 app.use("/", homer);
 // app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
-app.get('*', function (req, res) {
-  
-  res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
-  console.log("yooo")
-})
+
 
 app.listen(PORT, () => {
   console.log(`its running ${PORT}`);
