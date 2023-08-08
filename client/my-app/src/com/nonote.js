@@ -37,7 +37,7 @@ export function Nonote() {
     event.preventDefault();
     const currentTime = new Date();
    
-    fetch("api/createnote", {
+    fetch("/api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
