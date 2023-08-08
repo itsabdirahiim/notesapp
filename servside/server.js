@@ -68,7 +68,7 @@ app.use("/api", apir);
 app.use("/", homer);
 // app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
-if (process.env.HEROKU_ENV === "production") {
+if (process.env.NODE_ENV  === "production") {
   console.log("yooo")
   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
   app.get('*', function (req, res) {
