@@ -24,7 +24,7 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         return next(err); 
       }
-     console.log("Success! You are logged in yoooooo it works ff yppooo.",req.user)
+     console.log("Success! You are logged in yoooooo it works ff yppooo.")
       return res.json({ success: true, msg: "Success! You are logged in." });
       
     });
