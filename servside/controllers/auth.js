@@ -31,7 +31,11 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.logout = (req, res) => {
-  req.logout();
+  req.logout((err) => {
+    if (err) {
+      return res.status(401).json({ success: false, msg: "Unauthorized" });
+    }
+  });
   return res.json({ success: true, msg: "Logout successful." });
 };
 exports.getSignup = (req, res) => {
