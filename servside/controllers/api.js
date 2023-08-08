@@ -2,7 +2,7 @@ const Notes = require("../module/api");
 module.exports = {
   getapi: async (req, res) => {
     try {
-      console.log(req.user.id)
+      console.log(req.user)
       const docs = await Notes.find({ userId: req.user.id });
     console.log(req.user.username)
       const notes = docs.map((doc) => doc);
@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   createnote: async (req, res) => {
+    console.log(req.user)
     try {
       await Notes.create({
         note: req.body.note,
