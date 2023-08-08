@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   createnote: async (req, res) => {
-    console.log(req.user)
+    console.log(req.body.createdTime)
     try {
       await Notes.create({
         note: req.body.note,
