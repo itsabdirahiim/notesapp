@@ -59,7 +59,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, '../client/my-app/build/index.html')));
+app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 // app.use(bodyParser.json());
 
 app.use(flash());
@@ -69,7 +69,7 @@ app.use("/api", apir);
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname , "../client/my-app/build/index.html" ));
+    res.sendFile(path.join(__dirname , "../client/my-app/build" ));
   });
 }
 
