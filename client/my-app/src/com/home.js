@@ -9,22 +9,24 @@ export default function Home() {
 
   React.useEffect(() => {
     fetch("/api")
-  
       .then((response) => {
         if (response.ok) {
           return response.json();
-        } else {
-          // window.location.href = "/login";
+        } else if (response.status === 401) { // Authentication error
           throw new Error("Unauthorized");
-       
-         
+        } else {
+          throw new Error("Other error");
         }
       })
       .then((data) => {
         setApiData(data);
       })
       .catch((error) => {
-        window.location.href = "/login";
+        if (error.message === "Unauthorized") {
+          window.location.href = "/login"; // Redirect to login page for authentication error
+        } else {
+          console.error(error);
+        }
       });
   }, []);
 
