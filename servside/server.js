@@ -48,7 +48,7 @@ app.use(
     // proxy: true,
     store: new MongoStore({ mongoUrl: process.env.db_string }),
     cookie: {
-      secure:true, // Set to true in production, false otherwise
+      secure: process.env.NODE_ENV === "production", // Set to true in production, false otherwise
       maxAge: 3600000,
     },
   })
