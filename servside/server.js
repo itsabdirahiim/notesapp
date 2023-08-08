@@ -66,7 +66,7 @@ app.use(passport.session());
 app.use(flash());
 app.use("/api", apir);
 app.use("/", homer);
-app.use(express.static(path.join(__dirname, '../client/my-app/public')));
+app.use(express.static(path.join(__dirname, '../client/my-app/build',"index.html")));
 
 if (process.env.NODE_ENV === "production") {
   // app.use(express.static(path.join(__dirname, "../client/my-app/build")));
