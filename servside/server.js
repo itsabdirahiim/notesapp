@@ -78,7 +78,14 @@ app.use("/api", apir);
 //   console.log(process.env.NODE_ENV)
 //   console.log(req.session.id)
 // });
-
+app.use((req, res, next) => {
+  if (req.path.startsWith('/')) {
+    // Use API routes
+    const homer = require("./routes/home");
+    app.use("/", homer);
+  } 
+  next()
+});
 
 // Catch-all route handler for serving React app
 app.get('*', function (req, res) {
@@ -86,8 +93,7 @@ app.get('*', function (req, res) {
   console.log(process.env.NODE_ENV)
   console.log(req.path)
 });
-const homer = require("./routes/home");
-app.use("/", homer);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 })
