@@ -11,6 +11,7 @@ export default function Login() {
     fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         if (data.success === false) {
           
           window.location.href = "/";
@@ -20,7 +21,7 @@ export default function Login() {
       .catch((error) => {
         console.log(error);
       });
-      console.log(data.success)
+      
   }, []);
 
   function passwordsetter(event) {
