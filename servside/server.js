@@ -65,10 +65,10 @@ app.use(passport.session());
 // app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
-app.use("/api", apir);
 app.use("/", homer);
 
 app.get('*', function (req, res) {
+  app.use("/api", apir);
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.session.id)
