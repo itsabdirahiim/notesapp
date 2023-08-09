@@ -9,19 +9,22 @@ export default function Login() {
   const [flash, setFlashMessages] = React.useState();
 function checkbutton(){
   fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
-      method: "GET", // Specify the request method
-      credentials: "include", // Include credentials for cookies
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      credentials: "include",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.success);
+      if (data.success === false) {
+        window.location.href = "/";
+      }
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.success);
-        if (data.success === false) {
-          window.location.href = "/";
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .catch((error) => {
+      console.log(error);
+    });
 }
   
       

@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // app.use(cors());
 
-const whitelist = [ "https://notesapp-505-app-eacf6219a989.herokuapp.com"];
+const whitelist = ['http://localhost:3000', "https://notesapp-505-app-eacf6219a989.herokuapp.com", "http://localhost:50000"];
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin);
