@@ -8,7 +8,7 @@ export default function Login() {
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
 function checkbutton(){
-  alert("yooooo")
+  console.log("yooooo")
   // fetch("/login", {
   //   method: "GET",
   //   headers: {
