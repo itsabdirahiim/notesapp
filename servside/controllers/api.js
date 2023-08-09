@@ -1,6 +1,7 @@
 const Notes = require("../module/api");
 module.exports = {
   getapi: async (req, res) => {
+    console.log("apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii8888888888888")
     try {
       console.log(req.user)
       const docs = await Notes.find({ userId: req.user.id });
