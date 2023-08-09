@@ -69,13 +69,9 @@ const homer = require("./routes/home");
 app.use("/", homer);
 
 // Use API routes conditionally
-app.use((req, res, next) => {
-  if (req.path.startsWith('/api')) {
+
     const apir = require("./routes/api");
     app.use("/api", apir);
-  }
-  next();
-});
 
 // Catch-all route handler for serving React app
 app.get('*', function (req, res) {
