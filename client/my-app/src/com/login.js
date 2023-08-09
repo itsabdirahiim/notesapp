@@ -47,7 +47,7 @@ export default function Login() {
       return;
     }
 
-    fetch("/login", {
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
