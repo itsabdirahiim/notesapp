@@ -8,23 +8,24 @@ export default function Login() {
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
 function checkbutton(){
-  fetch("/login", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      credentials: "include",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.success);
-      if (data.success === false) {
-        window.location.href = "/";
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  alert("yooooo")
+  // fetch("/login", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     credentials: "include",
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data.success);
+  //     if (data.success === false) {
+  //       window.location.href = "/";
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 }
   
       
