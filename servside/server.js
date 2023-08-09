@@ -82,7 +82,7 @@ app.use("/api", apir);
 
 
 // Catch-all route handler for serving React app
-app.get('*', function (req, res) {
+app.get('/api', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.path)
