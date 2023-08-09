@@ -12,6 +12,7 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success === false) {
+          alert(data.success)
           window.location.href = "/";
         } else {
         }
