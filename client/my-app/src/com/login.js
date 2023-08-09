@@ -7,8 +7,8 @@ export default function Login() {
   const [isInvalidEmail, setIsInvalidEmail] = React.useState(false);
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
-  React.useEffect(() => {
-    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
+function checkbutton(){
+  fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
       method: "GET", // Specify the request method
       credentials: "include", // Include credentials for cookies
     })
@@ -22,8 +22,10 @@ export default function Login() {
       .catch((error) => {
         console.log(error);
       });
+}
+  
       
-  }, []);
+
 
   function passwordsetter(event) {
     setpassword(event.target.value);
@@ -125,7 +127,7 @@ export default function Login() {
             Log in
           </button>
         </form>
-
+ <button onClick={checkbutton} className="py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:bg-blue-700">check</button>
         <Link to="/signup" className="text-white hover:text-blue-900 relative">
           signup
         </Link>
