@@ -37,7 +37,7 @@ export function Nonote() {
     event.preventDefault();
     const currentTime = new Date();
    console.log(currentTime)
-    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api/createnote", {
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/createnote", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/logout")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
       .then((response) => {
         if (response.ok) {
           return response.json();

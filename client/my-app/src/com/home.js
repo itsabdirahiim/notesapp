@@ -8,7 +8,7 @@ export default function Home() {
   const [apiData, setApiData] = React.useState([{}]);
 
   React.useEffect(() => {
-    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api")
       .then((response) => {
         if (response.ok) {
           console.log("apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")

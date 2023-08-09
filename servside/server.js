@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // app.use(cors());
 
-const whitelist = ['http://localhost:3000', "https://notesapp-505-app-eacf6219a989.herokuapp.com", "http://localhost:50000"];
+const whitelist = ['http://localhost:3000', "https://notesappjj0-f1dac4eaa1a2.herokuapp.com", "http://localhost:50000"];
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin);
@@ -46,8 +46,8 @@ app.use(cookieParser());
 app.use(
   session({
     secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     // proxy: true,
     store: new MongoStore({ mongoUrl: process.env.db_string }),
     cookie: {
