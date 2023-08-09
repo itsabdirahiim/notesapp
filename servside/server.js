@@ -1,26 +1,23 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const connectDB = require("./config/data");
 require("dotenv").config({ path: "./config/.env" });
 require("./config/pas")(passport);
 const bodyParser = require("body-parser");
-var cors = require("cors");
-const homer = require("./routes/home");
-const apir = require("./routes/api");
+const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser')
-const path = require('path'); 
+const path = require('path');
+
 connectDB();
+
+const app = express();
 const PORT = process.env.PORT || 50000;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// app.use(cors());
-
+// Enable CORS for specific origins
 const whitelist = ['http://localhost:3000', "https://notesappjj0-f1dac4eaa1a2.herokuapp.com", "http://localhost:50000"];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -29,7 +26,7 @@ const corsOptions = {
       console.log("Origin acceptable");
       callback(null, {
         origin: true,
-        credentials: true, // Add this line
+        credentials: true,
       });
     } else {
       console.log("Origin rejected");
@@ -38,9 +35,9 @@ const corsOptions = {
   }
 };
 app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.set('trust proxy', 1);
-
 
 // Configure session middleware
 app.use(
@@ -57,15 +54,21 @@ app.use(
   })
 );
 
-
-
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
+// Use home route handler
+const homer = require("./routes/home");
 app.use("/", homer);
+
+// Use API routes conditionally
 app.use((req, res, next) => {
   if (req.path.startsWith('/api')) {
     const apir = require("./routes/api");
@@ -74,25 +77,13 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
+// Catch-all route handler for serving React app
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.session.id)
-  
-})
-
-
-// app.use(bodyParser.json());
-
-app.use(flash());
-
-
-// app.use(express.static(path.join(__dirname, '../client/my-app/build')));
-
-
+});
 
 app.listen(PORT, () => {
-  console.log(`its running ${PORT}`);
-});
+  console.log(`Server is running on port ${PORT}`);
+})
