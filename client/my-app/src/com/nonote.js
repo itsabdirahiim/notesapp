@@ -56,27 +56,28 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Logout failed.");
-        }
-      })
-      .then((data) => {
-        console.log("Logout data:", data);
-        if (data.success === true) {
-          // Redirect to the login route
-          window.location.href = "/login";
-        } else {
-          console.log("Unsuccessful logout:", data);
-          window.location.href = "/login";
-        }
-      })
-      .catch((error) => {
-        console.log("Logout error:", error);
-      });
+    console.log("yoooo")
+    // fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     } else {
+    //       throw new Error("Logout failed.");
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log("Logout data:", data);
+    //     if (data.success === true) {
+    //       // Redirect to the login route
+    //       window.location.href = "/login";
+    //     } else {
+    //       console.log("Unsuccessful logout:", data);
+    //       window.location.href = "/login";
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log("Logout error:", error);
+    //   });
     setnoteadded(false);
   }
   return (
