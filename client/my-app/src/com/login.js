@@ -8,7 +8,7 @@ export default function Login() {
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
 function checkbutton(){
-  fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
+  fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
