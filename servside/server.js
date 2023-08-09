@@ -85,7 +85,6 @@ app.get('*', function (req, res,next) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.path)
-  next()
 });
 const homer = require("./routes/home");
 app.use("/", homer);
