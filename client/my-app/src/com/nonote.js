@@ -56,7 +56,6 @@ export function Nonote() {
       });
   };
   function logout() {
-    console.log("yoooo")
     fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout", {
       method: "GET",
       headers: {
@@ -65,11 +64,7 @@ export function Nonote() {
       }, // Specify the request method // Include credentials for cookies
     })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Logout failed.");
-        }
+        response.json()
       })
       .then((data) => {
         console.log("Logout data:", data);
