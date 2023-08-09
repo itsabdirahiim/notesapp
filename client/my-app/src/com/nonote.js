@@ -73,7 +73,7 @@ export function Nonote() {
           window.location.href = "/login";
         } else {
           console.log("Unsuccessful logout:", data);
-          window.location.href = "/login";
+          window.location.href = "/";
         }
       })
       .catch((error) => {
