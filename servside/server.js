@@ -60,10 +60,11 @@ app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 // Use API routes
-const apir = require("./routes/api");
-app.use("/api", apir);
 const homer = require("./routes/home");
 app.use("/", homer);
+const apir = require("./routes/api");
+app.use("/api", apir);
+
 // Use main route handler
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
