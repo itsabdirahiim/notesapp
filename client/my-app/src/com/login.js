@@ -7,29 +7,23 @@ export default function Login() {
   const [isInvalidEmail, setIsInvalidEmail] = React.useState(false);
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
-function checkbutton(){
-  console.log("yooooo")
-  // fetch("/login", {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     credentials: "include",
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(data.success);
-  //     if (data.success === false) {
-  //       window.location.href = "/";
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-}
-  
+  React.useEffect(() => {
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
+      method: "GET", // Specify the request method
+      credentials: "include", // Include credentials for cookies
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.success);
+        if (data.success === false) {
+          window.location.href = "/";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
       
-
+  }, []);
 
   function passwordsetter(event) {
     setpassword(event.target.value);
@@ -131,7 +125,7 @@ function checkbutton(){
             Log in
           </button>
         </form>
- <button onClick={checkbutton} className="py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:bg-blue-700">check</button>
+
         <Link to="/signup" className="text-white hover:text-blue-900 relative">
           signup
         </Link>

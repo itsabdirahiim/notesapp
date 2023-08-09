@@ -11,6 +11,7 @@ export default function Home() {
     fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/api")
       .then((response) => {
         if (response.ok) {
+          console.log("apiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
           return response.json();
         } else if (response.status === 401) { // Authentication error
           throw new Error("Unauthorized");
