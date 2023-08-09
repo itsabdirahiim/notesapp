@@ -50,6 +50,7 @@ exports.logout = (req, res) => {
   });
 };
 exports.getSignup = (req, res) => {
+  console.log("sign up get in summned")
   if (req.user) {
     res.json({ success: false });
     // next()
