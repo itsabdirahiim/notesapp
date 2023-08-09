@@ -84,7 +84,7 @@ app.use((req, res, next) => {
     const homer = require("./routes/home");
     app.use("/", homer);
   } 
-  next()
+  
 });
 
 // Catch-all route handler for serving React app
