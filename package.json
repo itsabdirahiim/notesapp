@@ -26,7 +26,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client/my-app && npm install && npm install --only=dev --no-shrinkwrap && npm run build && cd ../../servside && npm install && npm install --only=dev --no-shrinkwrap",
-    "start": "npm install &&  node servside/server.js",
+    "start": "  node servside/server.js",
     "dev": "nodemon servside/server.js"
   },
   "devDependencies": {
