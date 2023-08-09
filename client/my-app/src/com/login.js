@@ -11,6 +11,7 @@ export default function Login() {
     method: "GET", // Specify the request method
     credentials: "include", // Include credentials for cookies
   })
+  console.log("helooooo")
     .then((response) => response.json())
     .then((data) => {
       console.log(data.success);
