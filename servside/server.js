@@ -65,8 +65,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 // // Use home route handler
-const homer = require("./routes/home");
-app.use("/", homer);
+
 
 // // Use API routes conditionally
 
@@ -82,12 +81,13 @@ app.use("/api", apir);
 
 
 // Catch-all route handler for serving React app
-app.get('/api', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.path)
 });
-
+const homer = require("./routes/home");
+app.use("/", homer);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 })
