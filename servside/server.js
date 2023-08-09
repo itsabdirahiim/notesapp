@@ -68,7 +68,7 @@ app.use("/api", apir);
 
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
-app.get('*', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.session.id)
