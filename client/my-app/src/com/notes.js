@@ -94,11 +94,7 @@ export default function Notes() {
   function logout() {
     fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Logout failed.");
-        }
+        response.json()
       })
       .then((data) => {
         if (data.success === true) {
