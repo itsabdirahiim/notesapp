@@ -11,7 +11,7 @@ export default function Login() {
     fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data.success)
         if (data.success === false) {
           
           window.location.href = "/";
