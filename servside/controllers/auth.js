@@ -3,6 +3,7 @@ const passport = require("passport");
 // const validator = require('validator')
 const User = require("../module/users");
 exports.getLogin = (req, res, next) => {
+  console.log("log in summned")
   if (req.user) {
     res.json({ success: false });
     next();
