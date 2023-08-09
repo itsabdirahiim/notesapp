@@ -47,9 +47,8 @@ export default function Login() {
       return;
     }
 
-    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
+    fetch("/login", {
       method: "POST",
- // Add this line to include the credentials
       headers: {
         "Content-Type": "application/json",
         credentials: "include",
