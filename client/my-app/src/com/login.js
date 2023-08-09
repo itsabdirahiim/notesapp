@@ -12,7 +12,7 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success === false) {
-          alert(data.success)
+          
           window.location.href = "/";
         } else {
         }
@@ -20,6 +20,7 @@ export default function Login() {
       .catch((error) => {
         console.log(error);
       });
+      console.log(data.success)
   }, []);
 
   function passwordsetter(event) {
