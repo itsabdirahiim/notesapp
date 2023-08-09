@@ -40,16 +40,7 @@ exports.logout = (req, res) => {
   });
   return res.json({ success: true, msg: "Logout successful." });
 };
-// exports.logout = (req, res) => {
-//   req.session.destroy((err) => {
-//     if (err) {
-//       return res.status(500).json({ success: false, msg: "Error destroying session" });
-//     }
-//     req.logout(); // Clear passport user
-//     res.clearCookie("connect.sid"); // Clear session cookie
-//     return res.json({ success: true, msg: "Logout successful." });
-//   });
-// };
+
 exports.getSignup = (req, res) => {
   console.log("sign up get in summned")
   if (req.user) {

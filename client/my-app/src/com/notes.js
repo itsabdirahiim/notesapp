@@ -97,6 +97,7 @@ export default function Notes() {
         response.json()
       })
       .then((data) => {
+        console.log(data)
         if (data.success === true) {
           window.location.href = "/login";
         } else {
