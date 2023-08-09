@@ -1,26 +1,43 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const connectDB = require("./config/data");
 require("dotenv").config({ path: "./config/.env" });
 require("./config/pas")(passport);
 const bodyParser = require("body-parser");
-var cors = require("cors");
-const homer = require("./routes/home");
-const apir = require("./routes/api");
+const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const cookieParser = require('cookie-parser')
-const path = require('path'); 
+const path = require('path');
+
 connectDB();
+
+const app = express();
 const PORT = process.env.PORT || 50000;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.set('trust proxy', 1);
 
-// app.use(cors());
+// Configure session middleware
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized:true,
+    proxy: true,
+    store: new MongoStore({ mongoUrl: process.env.db_string }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Set to true in production, false otherwise
+      maxAge: 3600000,
+    },
+  })
+);
 
+// Enable CORS for specific origins
 const whitelist = ['http://localhost:3000', "https://notesappjj0-f1dac4eaa1a2.herokuapp.com", "http://localhost:50000"];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -38,55 +55,29 @@ const corsOptions = {
   }
 };
 app.use(cors(corsOptions));
-app.use(cookieParser());
-app.set('trust proxy', 1);
 
+// Serve static files
+app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
-// Configure session middleware
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized:true,
-    proxy: true,
-    store: new MongoStore({ mongoUrl: process.env.db_string }),
-    cookie: {
-      secure: process.env.NODE_ENV === "production", // Set to true in production, false otherwise
-      maxAge: 3600000,
-    },
-  })
-);
+// Use API routes
+const apir = require("./routes/api");
+app.use("/api", apir);
 
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-// app.use(bodyParser.urlencoded({ extended: true }))
+// Use main route handler
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.session.id)
-  
-})
-app.use(express.static(path.join(__dirname, '../client/my-app/build')));
-app.use("/api", apir);
+});
 
+// Use home route handler
+const homer = require("./routes/home");
 app.use("/", homer);
 
-
-
-
-
-// app.use(bodyParser.json());
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
-
-// app.use(express.static(path.join(__dirname, '../client/my-app/build')));
-
-
-
 app.listen(PORT, () => {
-  console.log(`its running ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
