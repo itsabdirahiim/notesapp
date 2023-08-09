@@ -7,21 +7,23 @@ export default function Login() {
   const [isInvalidEmail, setIsInvalidEmail] = React.useState(false);
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
-  fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
-    method: "GET", // Specify the request method
-    credentials: "include", // Include credentials for cookies
-  })
-  console.log("helooooo")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.success);
-      if (data.success === false) {
-        window.location.href = "/";
-      }
+  React.useEffect(() => {
+    fetch("https://notesapp-505-app-eacf6219a989.herokuapp.com/login", {
+      method: "GET", // Specify the request method
+      credentials: "include", // Include credentials for cookies
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.success);
+        if (data.success === false) {
+          window.location.href = "/";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+  }, []);
 
   function passwordsetter(event) {
     setpassword(event.target.value);
