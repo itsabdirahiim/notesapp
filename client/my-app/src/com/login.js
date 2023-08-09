@@ -60,6 +60,7 @@ export default function Login() {
    
         if (data.success) {
           // Redirect to the desired route
+          console.log(data.success);
           window.location.href = "/";
         } else {
           if (data.err === "invalid_password") {
@@ -69,7 +70,7 @@ export default function Login() {
             setFlashMessages(data.err);
           }
         }
-        console.log(data.success);
+       
    
       })
 
