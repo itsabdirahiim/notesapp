@@ -80,20 +80,14 @@ app.use("/api", apir);
 // });
 
 const homer = require("./routes/home");
-app.use("/", (req, res, next) => {
-  homer(req, res, () => {
-    // Additional processing for the / route
-    console.log("Processing / route");
-    next();
-  });
-});
+
 // Catch-all route handler for serving React app
 app.get('*', function (req, res,next) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.path)
 });
-
+app.use("/",homer)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 })
