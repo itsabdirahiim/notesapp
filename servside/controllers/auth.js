@@ -59,6 +59,7 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res, next) => {
+  console.log("summned sign up")
   const user = new User({
     userName: req.body.username,
     email: req.body.email,
