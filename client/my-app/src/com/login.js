@@ -69,6 +69,8 @@ export default function Login() {
             setFlashMessages(data.err);
           }
         }
+        console.log(data.success);
+   
       })
 
       .catch((error) => {
