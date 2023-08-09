@@ -39,16 +39,16 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(cookieParser());
-// app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 
 
 // Configure session middleware
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-    // proxy: true,
+    resave: true,
+    saveUninitialized:true,
+    proxy: true,
     store: new MongoStore({ mongoUrl: process.env.db_string }),
     cookie: {
       secure: process.env.NODE_ENV === "production", // Set to true in production, false otherwise
@@ -67,6 +67,7 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
+  console.log(req.user)
   
 })
 
