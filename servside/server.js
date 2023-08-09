@@ -69,8 +69,9 @@ app.get('*', function (req, res) {
   console.log(req.session.id)
   
 })
-app.use("/api", apir);
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
+app.use("/api", apir);
+
 app.use("/", homer);
 
 
