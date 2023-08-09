@@ -66,7 +66,13 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 app.use("/", homer);
-app.use("/api", apir);
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    const apir = require("./routes/api");
+    app.use("/api", apir);
+  }
+  next();
+});
 
 
 
