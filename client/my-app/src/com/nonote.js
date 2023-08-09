@@ -56,13 +56,7 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        credentials: "include",
-      }, // Specify the request method // Include credentials for cookies
-    })
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
       .then((response) => {
         response.json()
       })
