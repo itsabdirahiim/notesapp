@@ -62,7 +62,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-// app.use(express.static(path.join(__dirname, '../client/my-app/build')));
+app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 // // Use home route handler
 const homer = require("./routes/home");
@@ -70,8 +70,8 @@ app.use("/", homer);
 
 // // Use API routes conditionally
 
-//     const apir = require("./routes/api");
-//     app.use("/api", apir);
+const apir = require("./routes/api");
+app.use("/api", apir);
 
 // // Catch-all route handler for serving React app
 // app.get('*', function (req, res) {
@@ -79,23 +79,13 @@ app.use("/", homer);
 //   console.log(process.env.NODE_ENV)
 //   console.log(req.session.id)
 // });
-app.use((req, res, next) => {
-  if (req.path.startsWith('/api')) {
-    // Use API routes
-    const apir = require("./routes/api");
-    app.use("/api", apir);
-  } else {
-    // Serve static files for React app
-    express.static(path.join(__dirname, '../client/my-app/build'))(req, res, next);
-    next()
-  }
-});
+
 
 // Catch-all route handler for serving React app
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
-  console.log(req.session.id)
+  console.log(req.path)
 });
 
 app.listen(PORT, () => {
