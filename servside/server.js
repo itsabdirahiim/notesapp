@@ -27,7 +27,10 @@ const corsOptions = {
     console.log("** Origin of request " + origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       console.log("Origin acceptable");
-      callback(null, true);
+      callback(null, {
+        origin: true,
+        credentials: true, // Add this line
+      });
     } else {
       console.log("Origin rejected");
       callback(new Error('Not allowed by CORS'));

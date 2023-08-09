@@ -71,6 +71,7 @@ export default function Notes() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          credentials: "include",
         },
         body: JSON.stringify({
           note: note,

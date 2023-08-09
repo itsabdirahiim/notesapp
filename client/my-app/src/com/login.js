@@ -51,9 +51,10 @@ export default function Login() {
  // Add this line to include the credentials
       headers: {
         "Content-Type": "application/json",
+        credentials: "include",
       },
       body: JSON.stringify({ email: email, password: password }),
-      credentials: "include",
+
     })
       .then((response) => response.json())
       .then((data) => {

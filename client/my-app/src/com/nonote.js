@@ -41,6 +41,7 @@ export function Nonote() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        credentials: "include",
       },
       body: JSON.stringify({ note: note, notes: notes, createdTime: currentTime, }),
     })
