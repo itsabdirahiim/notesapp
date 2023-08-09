@@ -62,7 +62,8 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 // Use API routes
 const apir = require("./routes/api");
 app.use("/api", apir);
-
+const homer = require("./routes/home");
+app.use("/", homer);
 // Use main route handler
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
@@ -71,8 +72,7 @@ app.get('*', function (req, res) {
 });
 
 // Use home route handler
-const homer = require("./routes/home");
-app.use("/", homer);
+
 
 app.use(passport.initialize());
 app.use(passport.session());
