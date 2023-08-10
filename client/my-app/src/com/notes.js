@@ -98,12 +98,7 @@ export default function Notes() {
       })
       .then((data) => {
         console.log(data)
-        if (data.success === true) {
-          window.location.href = "/login1";
-        } else {
-          // Handle unsuccessful logout
-          window.location.href = "/";
-        }
+        window.location.reload();
       })
       .catch((error) => {
         // Handle network errors or logout failure
