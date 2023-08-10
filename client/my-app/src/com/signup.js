@@ -7,11 +7,11 @@ export default function Signup() {
   const [password, setpassword] = React.useState();
   const [msg, setmsg] = React.useState();
   React.useEffect(() => {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/signup")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/signup")
       .then((response) => response.json())
       .then((data) => {
         if (data.success === false) {
-          window.location.href = "/home";
+          window.location.href = "/";
         } else {
         }
       })
@@ -30,7 +30,7 @@ export default function Signup() {
   }
   const sumbit2 = (event) => {
     event.preventDefault();
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/signup", {
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Signup() {
         console.log(data);
         if (data.success !== false) {
           // Redirect to the desired route
-          window.location.href = "/home/login";
+          window.location.href = "/api/login";
         } else {
           // Handle login error
           setmsg(data.msg);

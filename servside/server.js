@@ -69,7 +69,8 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 
 // // Use API routes conditionally
 
-
+const apir = require("./routes/api");
+app.use("/api", apir);
 
 // // Catch-all route handler for serving React app
 // app.get('*', function (req, res) {
@@ -79,15 +80,14 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 // });
 
 const homer = require("./routes/home");
-app.use("/home",homer)
+
 // Catch-all route handler for serving React app
 app.get('*', function (req, res,next) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
   console.log(process.env.NODE_ENV)
   console.log(req.path)
 });
-const apir = require("./routes/api");
-app.use("/api", apir);
+app.use("/",homer)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 })

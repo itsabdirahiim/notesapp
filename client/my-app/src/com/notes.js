@@ -92,17 +92,17 @@ export default function Notes() {
   });
 
   function logout() {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/logout")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/logout")
       .then((response) => {
         response.json()
       })
       .then((data) => {
         console.log(data)
         if (data.success === true) {
-          window.location.href = "/home/login";
+          window.location.href = "/api/login";
         } else {
           // Handle unsuccessful logout
-          window.location.href = "/home";
+          window.location.href = "/";
         }
       })
       .catch((error) => {
