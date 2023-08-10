@@ -7,7 +7,7 @@ export default function Signup() {
   const [password, setpassword] = React.useState();
   const [msg, setmsg] = React.useState();
   React.useEffect(() => {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/signup")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/signup")
       .then((response) => response.json())
       .then((data) => {
         if (data.success === false) {
@@ -30,7 +30,7 @@ export default function Signup() {
   }
   const sumbit2 = (event) => {
     event.preventDefault();
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/signup", {
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Signup() {
         console.log(data);
         if (data.success !== false) {
           // Redirect to the desired route
-          window.location.href = "/api/login";
+          window.location.href = "/login";
         } else {
           // Handle login error
           setmsg(data.msg);
@@ -96,9 +96,6 @@ export default function Signup() {
             placeholder="Password"
           />
           <p  className="text-red-500">{msg}</p>
-          {/* <button className=" py-[10px] px-4 sm:w-[40%] lg:h-[50%] text-white rounded-md bg-blue-500 hover:bg-blue-700 focus:bg-blue-700">
-            create account
-          </button> */}
         <button className="py-2 px-4 sm:w-2/5 lg:h-1/2 text-white rounded-md bg-blue-500 hover:bg-blue-700 focus:bg-blue-700">
   <span className="flex-shrink-0 truncate">sign up</span>
 </button>

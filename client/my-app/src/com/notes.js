@@ -92,14 +92,14 @@ export default function Notes() {
   });
 
   function logout() {
-    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/api/logout")
+    fetch("https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
       .then((response) => {
         response.json()
       })
       .then((data) => {
         console.log(data)
         if (data.success === true) {
-          window.location.href = "/api/login";
+          window.location.href = "/login";
         } else {
           // Handle unsuccessful logout
           window.location.href = "/";
