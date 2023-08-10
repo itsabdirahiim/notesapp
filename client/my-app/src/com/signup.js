@@ -102,7 +102,7 @@ export default function Signup() {
           <p className="text-gray-500">
             If you already have an account,{" "}
             <Link
-              to="/login"
+              to="/login1"
               className="  text-blue-500 hover:text-blue-700 relative"
             >
               login

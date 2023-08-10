@@ -24,7 +24,7 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         return next(err); 
       }
-     console.log("Success! You are logged in yoooooo it works ff yppooo.")
+     console.log("Success! You are logged in.")
       return res.json({ success: true, msg: "Success! You are logged in." });
       
     });
@@ -32,7 +32,6 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.logout = (req, res,next) => {
-  console.log("log outttt")
   req.logout((err) => {
     if (err) {
       return res.status(401).json({ success: false, msg: "Unauthorized" });
