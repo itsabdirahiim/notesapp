@@ -72,22 +72,17 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 const apir = require("./routes/api");
 app.use("/api", apir);
 
-// // Catch-all route handler for serving React app
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
-//   console.log(process.env.NODE_ENV)
-//   console.log(req.session.id)
-// });
-
 const homer = require("./routes/home");
+app.use("/",homer)
+
 
 // Catch-all route handler for serving React app
-app.get('*', function (req, res,next) {
-  res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
-  console.log(process.env.NODE_ENV)
-  console.log(req.path)
+app.get('^(?!/api).*', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../client/my-app/build/index.html'));
+  console.log(process.env.NODE_ENV);
+  console.log(req.path);
 });
-app.use("/",homer)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 })

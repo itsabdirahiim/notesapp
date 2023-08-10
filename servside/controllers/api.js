@@ -5,7 +5,7 @@ module.exports = {
     try {
       console.log(req.user)
       const docs = await Notes.find({ userId: req.user.id });
-    console.log(req.user.username)
+    console.log(req.username)
       const notes = docs.map((doc) => doc);
       res.json({ notes: notes });
     } catch (err) {
