@@ -31,7 +31,7 @@ exports.postLogin = (req, res, next) => {
   })(req, res, next);
 };
 
-exports.logout = (req, res) => {
+exports.logout = (req, res,next) => {
   console.log("log outttt")
   req.logout((err) => {
     if (err) {
@@ -39,6 +39,7 @@ exports.logout = (req, res) => {
     }
   });
   return res.json({ success: true, msg: "Logout successful." });
+ 
 };
 
 exports.getSignup = (req, res) => {

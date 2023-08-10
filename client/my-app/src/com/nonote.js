@@ -56,7 +56,7 @@ export function Nonote() {
       });
   };
   function logout() {
-    fetch(" https://notesappjj0-f1dac4eaa1a2.herokuapp.com/logout")
+    fetch(" https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/logout")
       .then((response) => {
         response.json()
       })
@@ -64,10 +64,10 @@ export function Nonote() {
         console.log("Logout data:", data);
         if (data.success === true) {
           // Redirect to the login route
-          window.location.href = "/login";
+          window.location.href = "/home/login";
         } else {
           console.log("Unsuccessful logout:", data);
-          window.location.href = "/";
+          window.location.href = "/home";
         }
       })
       .catch((error) => {

@@ -8,7 +8,7 @@ export default function Login() {
   const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
   const [flash, setFlashMessages] = React.useState();
   React.useEffect(() => {
-    fetch("  https://notesappjj0-f1dac4eaa1a2.herokuapp.com/login", {
+    fetch("  https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/login", {
       method: "GET", // Specify the request method
       credentials: "include", // Include credentials for cookies
     })
@@ -47,7 +47,7 @@ export default function Login() {
       return;
     }
 
-    fetch(" https://notesappjj0-f1dac4eaa1a2.herokuapp.com/login", {
+    fetch(" https://notesappjj0-f1dac4eaa1a2.herokuapp.com/home/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
