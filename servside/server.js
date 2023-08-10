@@ -79,7 +79,7 @@ app.use(express.static(path.join(__dirname, '../client/my-app/build')));
 // });
 
 const homer = require("./routes/home");
-app.use("/",homer)
+app.use("/home",homer)
 // Catch-all route handler for serving React app
 app.get('*', function (req, res,next) {
   res.sendFile(path.join(__dirname , '../client/my-app/build/index.html' ));
