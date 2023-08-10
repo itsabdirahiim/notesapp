@@ -125,7 +125,7 @@ export default function Login() {
           </button>
         </form>
 
-        <Link to="/signup" className="text-white hover:text-blue-900 relative">
+        <Link to="/signup1" className="text-white hover:text-blue-900 relative">
           signup
         </Link>
       </div>
