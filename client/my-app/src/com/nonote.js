@@ -64,10 +64,10 @@ export function Nonote() {
         console.log("Logout data:", data);
         if (data.success === true) {
           // Redirect to the login route
-          window.location.href = "/home/login";
+          window.location.href = "/login1";
         } else {
           console.log("Unsuccessful logout:", data);
-          window.location.href = "/home";
+          window.location.href = "/";
         }
       })
       .catch((error) => {

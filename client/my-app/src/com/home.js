@@ -24,7 +24,7 @@ export default function Home() {
       })
       .catch((error) => {
         if (error.message === "Unauthorized") {
-          window.location.href = "/login"; // Redirect to login page for authentication error
+          window.location.href = "/login1"; // Redirect to login page for authentication error
         } else {
           console.error(error);
         }

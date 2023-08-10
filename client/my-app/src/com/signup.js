@@ -47,7 +47,7 @@ export default function Signup() {
         console.log(data);
         if (data.success !== false) {
           // Redirect to the desired route
-          window.location.href = "/login";
+          window.location.href = "/login1";
         } else {
           // Handle login error
           setmsg(data.msg);
